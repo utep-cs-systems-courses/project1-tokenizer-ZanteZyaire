@@ -1,9 +1,8 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 #include "history.h"
-#include "tokenizer.c"
-#include "history.c"
 
 List *history; // History record
 int count = 0; // Keeps track of number of history items
