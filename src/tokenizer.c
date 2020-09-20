@@ -107,8 +107,8 @@ char **tokenize(char *str)
   while (*str) {
     str = word_start(str);
 
-    tokens[i++] = copy_str(str, word_length(str));
-
+    tokens[i] = copy_str(str, word_length(str));
+    i++;
     str = word_terminator(str);
   }
 
@@ -120,10 +120,8 @@ char **tokenize(char *str)
 /* Prints all tokens in order. */
 void print_tokens(char **tokens)
 {
-  int i = 0;
-  
-  while (tokens[i] != 0)
-    printf("tokens[%d] = %s\n", i, tokens[i++]);
+  for (int i = 0; tokens[i] != 0; i++)
+    printf("tokens[%d] = %s\n", i, tokens[i]);
 }
 
 /* Frees allocated memory of indiviual indexes 
@@ -131,9 +129,8 @@ void print_tokens(char **tokens)
 void free_tokens(char **tokens)
 {
   int i = 0;
-  
-  while (tokens[i] != 0)
-    free(tokens[i++]);
+  for (    ; tokens[i] != 0; i++)
+    free(tokens[i]);
 
   free(tokens[i]);
   free(tokens);
